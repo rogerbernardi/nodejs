@@ -43,3 +43,47 @@ async function main() {
 }
 
 main();
+
+
+
+var p1 = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        int = 10;
+        resolve(int);
+    }, 5000);
+}).then((solved) => {
+    console.log('Resolved p1');
+    return solved;
+}).catch((error) => {
+    console.log('Error', error);
+});
+
+var p2 = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        int = 10;
+        resolve(int);
+    }, 10000);
+}).then((solved) => {
+    console.log('Resolved p2');
+    return solved;
+}).catch((error) => {
+    console.log('Error', error);
+});
+
+var p3 = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        int = 10;
+        resolve(int);
+    }, 10000);
+}).then((solved) => {
+    console.log('Resolved p3');
+    return solved;
+}).catch((error) => {
+    console.log('Error', error);
+});
+
+Promise.all([p1, p2, p3]).then((values) => {
+    console.log((values).reduce((memo, i) => {
+        return memo + i;
+    }));
+});
